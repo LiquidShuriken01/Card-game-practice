@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://bqrvh5y6g47mn"]
+
+[ext_resource type="Script" uid="uid://cguea4xbhxeje" path="res://scripts/DraggableObj.gd" id="1_wtcfe"]
+
+[sub_resource type="Gradient" id="Gradient_y32ns"]
+offsets = PackedFloat32Array(0.99696, 1)
+colors = PackedColorArray(0.531988, 0.335808, 0.880369, 1, 0.531988, 0.335808, 0.880369, 1)
+metadata/_snap_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wtcfe"]
+gradient = SubResource("Gradient_y32ns")
+
+[sub_resource type="Gradient" id="Gradient_0e48y"]
+offsets = PackedFloat32Array(0, 0)
+colors = PackedColorArray(0, 0, 0, 1, 0.314333, 0.23, 0.46, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_epypp"]
+gradient = SubResource("Gradient_0e48y")
+
+[sub_resource type="Gradient" id="Gradient_wtcfe"]
+offsets = PackedFloat32Array(0, 0.00293255, 0.0058651, 0.00879765)
+colors = PackedColorArray(0, 0, 0, 1, 0.979472, 0.979472, 0.979472, 1, 1, 1, 1, 1, 0.979472, 0.979472, 0.979472, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0e48y"]
+gradient = SubResource("Gradient_wtcfe")
+width = 1
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.925
+anchor_top = -0.025
+anchor_right = -2.925
+anchor_bottom = -0.025
+offset_left = -45.0
+offset_top = -60.0
+offset_right = 45.0
+offset_bottom = 60.0
+action_mode = 0
+texture_normal = SubResource("GradientTexture1D_wtcfe")
+texture_pressed = SubResource("GradientTexture1D_epypp")
+ignore_texture_size = true
+stretch_mode = 1
+script = ExtResource("1_wtcfe")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 4.225
+anchor_top = 2.05
+anchor_right = 4.225
+anchor_bottom = 2.05
+offset_left = -54.0
+offset_top = -72.0
+offset_right = 54.0
+offset_bottom = 72.0
+texture = SubResource("GradientTexture1D_0e48y")
+expand_mode = 1
+
+[connection signal="button_down" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_down"]
+[connection signal="button_up" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_up"]
